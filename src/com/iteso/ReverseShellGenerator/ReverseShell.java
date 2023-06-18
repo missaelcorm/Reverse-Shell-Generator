@@ -3,6 +3,9 @@
  */
 package com.iteso.ReverseShellGenerator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class ReverseShell {
 
     // Attributes
@@ -14,12 +17,16 @@ public class ReverseShell {
     private final static int PRIVILEGED_PORTS = 1024;
     private final static int MIN_PORT = 0;
     private final static int MAX_PORT = 65536;
+    private final static String IP_REGEXP = "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
+
     public ReverseShell(){
         setLocalIP(this.localIP);
         setLocalPort(this.localPort);
         setPortRequireRootPermissions();
     }
+
     public void setLocalIP(String localIP){
+        if(isIPValid())
             this.localIP = localIP;
     }
 
@@ -42,6 +49,12 @@ public class ReverseShell {
 
     public int getLocalPort(){
         return this.localPort;
+    }
+
+    public boolean isIPValid(){
+        Pattern pattern = Pattern.compile(IP_REGEXP, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(this.getLocalIP());
+        return matcher.find();
     }
 
 }
