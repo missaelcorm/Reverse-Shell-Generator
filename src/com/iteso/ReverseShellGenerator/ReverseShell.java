@@ -10,6 +10,8 @@ public class ReverseShell {
     private int localPort = 9000;
     private boolean requireRootPermissions = false;
 
+    // Statics Variables
+    private final static int PRIVILEGED_PORTS = 1024;
     private final static int MIN_PORT = 0;
     private final static int MAX_PORT = 65536;
     public ReverseShell(){
@@ -24,6 +26,14 @@ public class ReverseShell {
     public void setLocalPort(int localPort){
         if(localPort >= MIN_PORT && localPort <=  MAX_PORT)
             this.localPort = localPort;
+    }
+
+    private boolean isPortPrivileged(){
+        return this.localPort < PRIVILEGED_PORTS ? true : false;
+    }
+
+    private void setPortRequireRootPermissions(){
+        this.requireRootPermissions = isPortPrivileged();
     }
 
     public String getLocalIP(){
