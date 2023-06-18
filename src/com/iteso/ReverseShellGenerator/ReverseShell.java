@@ -57,4 +57,11 @@ public class ReverseShell {
         return matcher.find();
     }
 
+    public String toString(){
+        return "{" +
+                    "\"localIP\": " + "\"" + getLocalIP() + "\"," +
+                    "\"localPort\": " + getLocalPort() + "," +
+                    "\"requireRootPermission\": " + isPortPrivileged() +
+                "}";
+    }
 }
