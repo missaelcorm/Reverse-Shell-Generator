@@ -20,7 +20,7 @@ public class ReverseShell {
     private final static String IP_REGEXP = "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
 
     // Listeners
-    public enum LISTENER{
+    public static enum LISTENER{
         NC, NC_FREEBSD, BUSYBOX_NC, NCAT, NACT_EXE, NCAT_TLS,
         RLWRAP_NC, RUST_CAT, RUSTCAT_COMMAND_HISTORY, PWNCAT,
         WINDOWS_CONPTY, SOCAT_TTY, POWERCAT, MSFCONSOLE, HOAXSHELL
