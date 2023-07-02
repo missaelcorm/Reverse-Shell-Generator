@@ -16,6 +16,8 @@ public class ReverseShell implements ReverseGetShellCode{
     protected int localPort = 9000;
     private boolean requireRootPermissions = false;
     protected LISTENER listener = null;
+    protected SHELLS shellType = null;
+    protected String shell = "";
 
     // Statics Variables
     private final static int PRIVILEGED_PORTS = 1024;
@@ -43,6 +45,24 @@ public class ReverseShell implements ReverseGetShellCode{
         AWK, DART, CRYSTAL_SYSTEM, CRYSTAL_CODE
     }
 
+    // Shells
+    public enum SHELLS{
+        SH("sh"), BIN_SH("/bin/sh"), BASH("bash"), BIN_BASH("/bin/bash"), CMD("cmd"),
+        POWERSHELL("powershell"), PWSH("pwsh"), ASH("ash"), BSH("bsh"), CSH("csh"),
+        KSH("ksh"), ZSH("zsh"), PDKSH("pdksh"), TCSH("tcsh"), MKSH("mksh"), DASH("dash");
+
+        protected String shell = "";
+        SHELLS(String shell){
+            setShell(shell);
+        }
+
+        public void setShell(String shell) {
+            this.shell = shell;
+        }
+
+        public String getShell() {
+            return shell;
+        }
     }
 
     protected ReverseShell(String localIP, int localPort, LISTENER listener, SHELLS shellType){
@@ -216,6 +236,11 @@ public class ReverseShell implements ReverseGetShellCode{
         this.listener = listener;
     }
 
+    public void setShellType(SHELLS shellType) {
+        this.shellType = shellType;
+        this.shell = this.shellType.getShell();
+    }
+
     private boolean isPortPrivileged(){
         return this.localPort < PRIVILEGED_PORTS ? true : false;
     }
@@ -230,6 +255,14 @@ public class ReverseShell implements ReverseGetShellCode{
 
     public int getLocalPort(){
         return this.localPort;
+    }
+
+    public SHELLS getShellType() {
+        return shellType;
+    }
+
+    public String getShell() {
+        return shell;
     }
 
     public boolean isIPValid(){
