@@ -14,7 +14,7 @@ public class ReverseShell implements ReverseGetShellCode{
     // Attributes
     protected String localIP = "10.10.10.10";
     protected int localPort = 9000;
-    private boolean requireRootPermissions = false;
+    protected boolean requireRootPermissions = false;
     protected LISTENER listener = null;
     protected SHELLS shellType = null;
     protected String shell = "";
@@ -265,6 +265,10 @@ public class ReverseShell implements ReverseGetShellCode{
         return shell;
     }
 
+    protected Boolean getRequireRootPermissions(){
+        return this.requireRootPermissions;
+    }
+
     public boolean isIPValid(){
         Pattern pattern = Pattern.compile(IP_REGEXP, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(this.getLocalIP());
@@ -275,7 +279,7 @@ public class ReverseShell implements ReverseGetShellCode{
         return "{" +
                     "\"localIP\": " + "\"" + getLocalIP() + "\"," +
                     "\"localPort\": " + getLocalPort() + "," +
-                    "\"requireRootPermission\": " + isPortPrivileged() +
+                    "\"requireRootPermission\": " + getRequireRootPermissions() +
                 "}";
     }
 /* 
