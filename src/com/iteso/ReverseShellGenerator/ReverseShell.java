@@ -280,13 +280,6 @@ public class ReverseShell implements ReverseGetShellCode{
                     "\"requireRootPermission\": " + getRequireRootPermissions() +
                 "}";
     }
-/* 
-    public String getShellCode(){
-        if(this instanceof Bash_i)
-            return ((Bash_i)this).getShell();
-
-        return null;
-    }*/
 
     public String getListenerCode(){
         String sudoStr = isPortPrivileged() ? "sudo " : "";
