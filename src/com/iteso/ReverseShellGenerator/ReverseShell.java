@@ -23,7 +23,8 @@ public class ReverseShell implements ReverseGetShellCode{
     private final static int PRIVILEGED_PORTS = 1024;
     private final static int MIN_PORT = 0;
     private final static int MAX_PORT = 65536;
-    private final static String IP_REGEXP = "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
+    //private final static String IP_REGEXP = "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
+    private final static String IP_REGEXP = "^(?:(?:25[0-5]|2[0-4]\\d|1?\\d?\\d)(?:\\.(?!$)|$)){4}$";
 
     // Listeners
     public enum LISTENER{
@@ -221,7 +222,7 @@ public class ReverseShell implements ReverseGetShellCode{
     }
 
     public void setLocalIP(String localIP){
-        if(isIPValid())
+        if(isIPValid(localIP))
             this.localIP = localIP;
     }
 
@@ -267,9 +268,9 @@ public class ReverseShell implements ReverseGetShellCode{
         return this.requireRootPermissions;
     }
 
-    public boolean isIPValid(){
+    public boolean isIPValid(String localIP){
         Pattern pattern = Pattern.compile(IP_REGEXP, Pattern.CASE_INSENSITIVE);
-        Matcher matcher = pattern.matcher(this.getLocalIP());
+        Matcher matcher = pattern.matcher(localIP);
         return matcher.find();
     }
 

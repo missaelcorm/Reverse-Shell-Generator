@@ -29,7 +29,7 @@ public class App extends JFrame implements ActionListener{
     private SHELLS shellTypes[] = SHELLS.values();
 
     private String localIP = "10.10.10.10";
-    private int localPort = 80;
+    private int localPort = 9000;
     private REVERSE_TYPE revSelected = REVERSE_TYPE.BASH_i;
     private LISTENER listSelected = LISTENER.NC;
     private SHELLS shellSelected = SHELLS.SH;
