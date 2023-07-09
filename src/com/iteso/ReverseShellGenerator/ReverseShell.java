@@ -121,9 +121,9 @@ public class ReverseShell implements ReverseGetShellCode{
                 return new Java_2(localIP, localPort, listener, shellType);
             case JAVA_3:
                 return new Java_3(localIP, localPort, listener, shellType);
-            case JAVA_TWO_WAY: //not working
+            case JAVA_TWO_WAY:
                 return new Java_two_way(localIP, localPort, listener, shellType);
-            case JAVA_WEB: //not working
+            case JAVA_WEB: 
                 return new Java_web(localIP, localPort, listener, shellType);
             case LUA_1:
                 return new Lua_1(localIP, localPort, listener, shellType);
@@ -175,11 +175,11 @@ public class ReverseShell implements ReverseGetShellCode{
                 return new Php_System(localIP, localPort, listener, shellType);
             case POWERSHELL_1:
                 return new Powershell_1(localIP, localPort, listener, shellType);
-            case POWERSHELL_2: //%
+            case POWERSHELL_2:
                 return new Powershell_2(localIP, localPort, listener, shellType);
-            case POWERSHELL_3: //%
+            case POWERSHELL_3:
                 return new Powershell_3(localIP, localPort, listener, shellType);
-            case POWERSHELL_4_TLS: //''
+            case POWERSHELL_4_TLS: 
                 return new Powershell_4(localIP, localPort, listener, shellType);
             case PYTHON3_1:
                 return new Python3_1(localIP, localPort, listener, shellType);

