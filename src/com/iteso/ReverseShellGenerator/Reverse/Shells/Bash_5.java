@@ -19,11 +19,11 @@ public class Bash_5  extends Reverse{
 
     @Override
     public String toString(){
-        return "{" + "\"parameters\": " + super.toString() + ",\n" +
-                    "\"reverse_listener_code\": " + "\"" + super.getListenerCode() + "\",\n" +
-                    "\"reverse_shell_code\": " + "\"" + getShellCode() + "\",\n" +
-                    "\"reverse_shell_code_b64\": " + "\"" + DEncoder.encodeToBase64(getShellCode()) + "\",\n" +
-                    "\"reverse_shell_code_hex\": " + "\"" + DEncoder.encodeToHex(getShellCode()) + "\"\n" +
+        return "{" + "\"parameters\": " + super.toString() + "," +
+                    "\"reverse_listener_code\": " + "\"" + super.getListenerCode() + "\"," +
+                    "\"reverse_shell_code\": " + "\"" + getShellCode() + "\"," +
+                    "\"reverse_shell_code_b64\": " + "\"" + DEncoder.encodeToBase64(getShellCode()) + "\"," +
+                    "\"reverse_shell_code_hex\": " + "\"" + DEncoder.encodeToHex(getShellCode()) + "\"" +
                 "}";
     }
 

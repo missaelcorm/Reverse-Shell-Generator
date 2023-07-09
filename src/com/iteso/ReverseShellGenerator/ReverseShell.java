@@ -39,7 +39,7 @@ public class ReverseShell implements ReverseGetShellCode{
         HASHKELL_1, PERL, PERL_NO_SH, PERL_PENTESTMONKEY, PHP_PENTESTMONKEY, PHP_IVAN_SINCEK, PHP_CMD,
         PHP_CMD_2, PHP_CMD_SMALL, PHP_EXEC, PHP_SHELL_EXEC, PHP_SYSTEM, PHP_PASSTHRU, PHP, PHP_POPEN,
         PHP_PROC_OPEN, WINDOWS_CONPTY, POWERSHELL_1, POWERSHELL_2, POWERSHELL_3, POWERSHELL_4_TLS,
-        POWERSHELL_3_B64, PYTHON_1, PYTHON_2, PYTHON3_1, PYTHON3_2, PYTHON3_WINDOWS, PYTHON3_SHORTEST,
+        PYTHON_1, PYTHON_2, PYTHON3_1, PYTHON3_2, PYTHON3_WINDOWS, PYTHON3_SHORTEST,
         RUBY_1, RUBY_NO_SH, SOCAT_1, SOCAT_2_TTY, SQLITE3_NC_MKFIFO, NODE_JS, NODE_JS_2, JAVA_1, JAVA_2,
         JAVA_3, JAVA_WEB, JAVA_TWO_WAY, JAVASCRIPT, GROOVY, TELNET, ZSH, LUA_1, LUA_2, GOLANG, VLANG,
         AWK, DART, CRYSTAL_SYSTEM, CRYSTAL_CODE
@@ -90,15 +90,15 @@ public class ReverseShell implements ReverseGetShellCode{
             case NC_e:
                 return new Nc_e(localIP, localPort, listener, shellType);
             case AWK:
-                break;
+                return new Awk(localIP, localPort, listener, shellType);
             case BUSYBOX_NC_e:
                 return new Busybox_nce(localIP, localPort, listener, shellType);
             case C:
                 return new C(localIP, localPort, listener, shellType);
             case CRYSTAL_CODE:
-                break;
+                return new Crystal_code(localIP, localPort, listener, shellType);
             case CRYSTAL_SYSTEM:
-                break;
+                return new Crystal_system(localIP, localPort, listener, shellType);
             case C_SHARP_BASH_i:
                 return new C_Bashi(localIP, localPort, listener, shellType);
             case C_SHARP_TCP_CLIENT:
@@ -106,29 +106,29 @@ public class ReverseShell implements ReverseGetShellCode{
             case C_WINDOWS:
                 return new C_Windows(localIP, localPort, listener, shellType);
             case DART:
-                break;
+                return new Dart(localIP, localPort, listener, shellType);
             case GOLANG:
-                break;
+                return new Golang(localIP, localPort, listener, shellType);
             case GROOVY:
-                break;
+                return new Groovy(localIP, localPort, listener, shellType);
             case HASHKELL_1:
                 return new Haskell1(localIP, localPort, listener, shellType);
             case JAVASCRIPT:
-                break;
+                return new Javascript(localIP, localPort, listener, shellType);
             case JAVA_1:
-                break;
+                return new Java_1(localIP, localPort, listener, shellType);
             case JAVA_2:
-                break;
+                return new Java_2(localIP, localPort, listener, shellType);
             case JAVA_3:
-                break;
-            case JAVA_TWO_WAY:
-                break;
-            case JAVA_WEB:
-                break;
+                return new Java_3(localIP, localPort, listener, shellType);
+            case JAVA_TWO_WAY: //not working
+                return new Java_two_way(localIP, localPort, listener, shellType);
+            case JAVA_WEB: //not working
+                return new Java_web(localIP, localPort, listener, shellType);
             case LUA_1:
-                break;
+                return new Lua_1(localIP, localPort, listener, shellType);
             case LUA_2:
-                break;
+                return new Lua_2(localIP, localPort, listener, shellType);
             case NCAT_EXE_e:
                 return new NCAT_EXE(localIP, localPort, listener, shellType);
             case NCAT_UDP:
@@ -140,9 +140,9 @@ public class ReverseShell implements ReverseGetShellCode{
             case NC_exe_e:
                 return new Nc_exe_e(localIP, localPort, listener, shellType);
             case NODE_JS:
-                break;
-            case NODE_JS_2:
-                break;
+                return new Node_js(localIP, localPort, listener, shellType);
+            case NODE_JS_2: 
+                return new Node_js2(localIP, localPort, listener, shellType);
             case PERL:
                 return new Perl(localIP, localPort, listener, shellType);
             case PERL_NO_SH:
@@ -174,47 +174,45 @@ public class ReverseShell implements ReverseGetShellCode{
             case PHP_SYSTEM:
                 return new Php_System(localIP, localPort, listener, shellType);
             case POWERSHELL_1:
-                break;
-            case POWERSHELL_2:
-                break;
-            case POWERSHELL_3:
-                break;
-            case POWERSHELL_3_B64:
-                break;
-            case POWERSHELL_4_TLS:
-                break;
+                return new Powershell_1(localIP, localPort, listener, shellType);
+            case POWERSHELL_2: //%
+                return new Powershell_2(localIP, localPort, listener, shellType);
+            case POWERSHELL_3: //%
+                return new Powershell_3(localIP, localPort, listener, shellType);
+            case POWERSHELL_4_TLS: //''
+                return new Powershell_4(localIP, localPort, listener, shellType);
             case PYTHON3_1:
-                break;
+                return new Python3_1(localIP, localPort, listener, shellType);
             case PYTHON3_2:
-                break;
+                return new Python3_2(localIP, localPort, listener, shellType);
             case PYTHON3_SHORTEST:
-                break;
+                return new Python3_shortest(localIP, localPort, listener, shellType);
             case PYTHON3_WINDOWS:
-                break;
+                return new Python3_Windows(localIP, localPort, listener, shellType);
             case PYTHON_1:
-                break;
+                return new Python_1(localIP, localPort, listener, shellType);
             case PYTHON_2:
-                break;
+                return new Python_2(localIP, localPort, listener, shellType);
             case RUBY_1:
-                break;
+                return new Ruby_1(localIP, localPort, listener, shellType);
             case RUBY_NO_SH:
-                break;
+                return new Ruby_no_sh(localIP, localPort, listener, shellType);
             case RUSTCAT:
                 return new Rustcat(localIP, localPort, listener, shellType);
             case SOCAT_1:
-                break;
+                return new Socat_1(localIP, localPort, listener, shellType);
             case SOCAT_2_TTY:
-                break;
+                return new Socat_2_tty(localIP, localPort, listener, shellType);
             case SQLITE3_NC_MKFIFO:
-                break;
+                return new Sqlite3_nc_mkfifo(localIP, localPort, listener, shellType);
             case TELNET:
-                break;
+                return new Telnet(localIP, localPort, listener, shellType);
             case VLANG:
-                break;
+                return new Vlang(localIP, localPort, listener, shellType);
             case WINDOWS_CONPTY:
                 return new Windows_conpty(localIP, localPort, listener, shellType);
             case ZSH:
-                break;
+                return new Zsh(localIP, localPort, listener, shellType);
             default:
                 break;
         }
