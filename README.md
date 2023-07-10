@@ -13,7 +13,7 @@ The output is as a JSON Object, and give you all the info and code that you mayb
 
 The Reverse code is given in plain text, Base 64 encode and Hex encode, because maybe there are security when a payload is sent.
 
-Example JSON Output:
+### Example JSON Output:
 
 ```json
 {
@@ -29,5 +29,7 @@ Example JSON Output:
 }
 ```
 
-GUI:
+### GUI:
 ![Reverse Shell Generator's GUI](images/gui.png)
+
+### Slideshow: [Reverse Shell Generator's Slideshow](https://www.canva.com/design/DAFoMWoBFmE/vLE4ESwD0eWze2WT0GvVtA/edit?utm_content=DAFoMWoBFmE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
